@@ -55,15 +55,10 @@ public struct BottomSheet<Content: View>: BottomSheetView {
     @Binding private var isExpanded: Bool
     @GestureState private var translation: CGFloat = 0
 
-    private var handle: some View {
-        BottomSheetHandle(style: style.handleStyle)
-            .onTapGesture { self.isExpanded.toggle() }
-    }
-
     public var body: some View {
         GeometryReader { geo in
             VStack(spacing: 0) {
-                handle.padding()
+                BottomSheetHandle(isExpanded: $isExpanded, style: style.handleStyle)
                 // Add padding to content so that content does not go into safe area
                 content.padding(.bottom, geo.safeAreaInsets.bottom)
             }

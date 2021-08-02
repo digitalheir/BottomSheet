@@ -13,17 +13,26 @@ import SwiftUI
  `BottomSheet`. It has no built-in behavior.
  */
 public struct BottomSheetHandle: View {
-    
-    public init(style: BottomSheetHandleStyle = .standard) {
+    @Binding private var isExpanded: Bool
+
+    public init(isExpanded: Binding<Bool>, style: BottomSheetHandleStyle = .standard) {
         self.style = style
+        self._isExpanded = isExpanded
     }
     
     private let style: BottomSheetHandleStyle
     
     public var body: some View {
-        RoundedRectangle(cornerRadius: style.cornerRadius)
-            .fill(style.color)
-            .frame(width: style.size.width, height: style.size.height)
+        Button(action: { isExpanded.toggle() }, label: {
+            HStack {
+                Spacer()
+                RoundedRectangle(cornerRadius: style.cornerRadius)
+                        .fill(style.color)
+                        .frame(width: style.size.width, height: style.size.height)
+                        .padding()
+                Spacer()
+            }
+        })
     }
 }
 
