@@ -70,7 +70,7 @@ public struct BottomSheet<Content: View>: BottomSheetView {
             .frame(height: geo.size.height + geo.safeAreaInsets.bottom, alignment: .bottom)
             .offset(y: max(offset(for: geo) + translation, 0))
             .animation(.interactiveSpring())
-            .gesture(
+            .highPriorityGesture(
                 DragGesture().updating($translation) { value, state, _ in
                     state = value.translation.height
                 }.onEnded { value in
