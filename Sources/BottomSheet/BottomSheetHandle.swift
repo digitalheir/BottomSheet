@@ -38,6 +38,6 @@ public struct BottomSheetHandle: View {
 
 struct BottomSheetHandle_Previews: PreviewProvider {
     static var previews: some View {
-        BottomSheetHandle()
+        BottomSheetHandle(Binding.constant(true))
     }
 }
