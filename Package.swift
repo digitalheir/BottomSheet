@@ -6,6 +6,7 @@ let package = Package(
     name: "BottomSheet",
     defaultLocalization: "en",
     platforms: [
+        .macOS(.v11),
         .iOS(.v13)
     ],
     products: [
